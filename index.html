@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加州科技亲子自驾 · 全景行程手册</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            body { font-size: 12pt; background: #fff !important; }
+            .card { break-inside: avoid; shadow: none; border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 font-sans leading-relaxed pb-16 min-h-screen">
+
+    <!-- 顶栏 Header：浅色清新渐变 -->
+    <header class="bg-gradient-to-r from-sky-600 via-indigo-600 to-purple-600 text-white py-8 px-6 shadow-md mb-8">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div>
+                <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full border border-white/30 tracking-wide">🌱 2026 亲子研学尊享路书</span>
+                <h1 class="text-3xl md:text-4xl font-black mt-3 tracking-tight">加州科技亲子自驾 · 全景行程手册</h1>
+                <p class="text-sky-100 text-sm mt-1">旧金山 ➔ 硅谷 ➔ 蒙特雷海景 ➔ 1号公路 ➔ 洛杉矶 ➔ 圣地亚哥 ➔ 马尼拉</p>
+            </div>
+            
+            <!-- 实时倒计时区块 -->
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 px-5 py-3 rounded-2xl text-center shadow-sm">
+                <div class="text-xs text-sky-100 font-medium mb-1">距离启程倒计时 ✈️</div>
+                <div id="countdown" class="text-base font-mono font-bold text-amber-200 tracking-wider">计算中...</div>
+            </div>
+
+            <button onclick="window.print()" class="no-print bg-white text-indigo-700 hover:bg-slate-100 text-sm font-bold px-4 py-2.5 rounded-xl transition shadow-sm flex items-center gap-2 cursor-pointer">
+                🖨️ 打印 / 导出 PDF
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 space-y-8">
+
+        <!-- 概览指标卡片 -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200/80 text-center">
+                <div class="text-slate-400 text-xs font-semibold">全程天数</div>
+                <div class="text-2xl font-black text-sky-600 mt-1">6 天 5 晚</div>
+            </div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200/80 text-center">
+                <div class="text-slate-400 text-xs font-semibold">预订车型 (IFAR)</div>
+                <div class="text-sm font-bold text-indigo-600 mt-1">日产 Rogue / 同组SUV</div>
+            </div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200/80 text-center">
+                <div class="text-slate-400 text-xs font-semibold">租车公司</div>
+                <div class="text-xl font-black text-purple-600 mt-1">Dollar 租车</div>
+            </div>
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200/80 text-center">
+                <div class="text-slate-400 text-xs font-semibold">主驾驶人</div>
+                <div class="text-lg font-bold text-emerald-600 mt-1">BAOYI CHEN</div>
+            </div>
+        </section>
+
+        <!-- 🚗 租车订单及取还车指引 -->
+        <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+            <h2 class="text-base font-bold text-slate-800 mb-3 flex items-center gap-2">
+                🚗 租车订单与核心凭证 (Dollar Rent A Car)
+            </h2>
+            <div class="grid md:grid-cols-3 gap-3 text-xs text-slate-600 bg-sky-50/50 p-3.5 rounded-xl mb-4 border border-sky-100">
+                <div><strong>订单编号：</strong>1128150861435284</div>
+                <div><strong>提车凭证号：</strong><span class="text-indigo-600 font-mono font-bold">L720EDA4567</span></div>
+                <div><strong>保障套餐：</strong>超级碰撞盗抢保障 (¥0 起赔)</div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 text-xs">
+                <!-- 取车点 -->
+                <div class="border border-sky-200 rounded-xl p-4 bg-sky-50/30">
+                    <div class="flex justify-between items-center mb-1.5">
+                        <span class="font-bold text-sky-900 text-sm">📍 取车：旧金山机场 (SFO)</span>
+                        <span class="bg-sky-100 text-sky-800 px-2 py-0.5 rounded font-medium">10/01 22:30</span>
+                    </div>
+                    <p class="text-slate-600 mb-1"><strong>地址：</strong>780 N McDonnell Road Lot C, SFO</p>
+                    <p class="text-slate-600 mb-2"><strong>电话：</strong>+1-866-434-2226 (24h)</p>
+                    <p class="text-slate-500 bg-white p-2 rounded border border-sky-100">
+                        <strong>指引：</strong>乘 AirTrain 蓝线至 Car Rental Center Station，至 Dollar 柜台办理取车，乘电梯至指定车位取车。
+                    </p>
+                </div>
+
+                <!-- 还车点 -->
+                <div class="border border-indigo-200 rounded-xl p-4 bg-indigo-50/30">
+                    <div class="flex justify-between items-center mb-1.5">
+                        <span class="font-bold text-indigo-900 text-sm">🏁 还车：洛杉矶机场 (LAX)</span>
+                        <span class="bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded font-medium">10/04 22:30</span>
+                    </div>
+                    <p class="text-slate-600 mb-1"><strong>地址：</strong>5251 W 98th St, Los Angeles</p>
+                    <p class="text-slate-600 mb-2"><strong>电话：</strong>+1-310-258-3000 (24h)</p>
+                    <p class="text-slate-500 bg-white p-2 rounded border border-indigo-100">
+                        <strong>指引：</strong>跟随 Return 标志还车至 Dollar 停车场，加满油后搭乘免费班车前往航站楼。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 详细行程大表 -->
+        <section class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="px-6 py-4 border-b border-slate-100 bg-slate-50/80 flex justify-between items-center">
+                <h2 class="text-base font-bold text-slate-800 flex items-center gap-2">
+                    📅 完整行程时间节点与规划
+                </h2>
+                <span class="text-xs text-slate-400">点击地图链接可导航</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-slate-600">
+                    <thead class="bg-slate-100/70 text-slate-700 text-xs uppercase font-semibold">
+                        <tr>
+                            <th class="py-3 px-4">日期 & 星期</th>
+                            <th class="py-3 px-4">时间段</th>
+                            <th class="py-3 px-4">项目 / 航班 / 景点</th>
+                            <th class="py-3 px-4">距离与时间</th>
+                            <th class="py-3 px-4">活动要点、预案与重要提醒</th>
+                            <th class="py-3 px-4">地图直达</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-xs">
+                        <tr class="hover:bg-sky-50/40">
+                            <td class="py-3.5 px-4 font-semibold text-slate-900">10/1 (周四)</td>
+                            <td class="py-3.5 px-4">18:00 - 20:20</td>
+                            <td class="py-3.5 px-4 font-medium text-sky-600">🛫 香港 ➔ 马尼拉</td>
+                            <td class="py-3.5 px-4">飞行约 2 h 20 min</td>
+                            <td class="py-3.5 px-4">搭乘 PR307，行李直挂旧金山</td>
+                            <td class="py-3.5 px-4 text-slate-400">转机 2h55m</td>
+                        </tr>
+                        <tr class="hover:bg-sky-50/40">
+                            <td class="py-3.5 px-4 font-semibold text-slate-900">10/1 (周四)</td>
+                            <td class="py-3.5 px-4">23:15 - 21:10</td>
+                            <td class="py-3.5 px-4 font-medium text-sky-600">🛫 马尼拉 ➔ 旧金山</td>
+                            <td class="py-3.5 px-4">飞行约 12 h 55 min</td>
+                            <td class="py-3.5 px-4">搭乘 PR104（跨越日期变更线）</td>
+                            <td class="py-3.5 px-4 text-slate-400">SFO 国际航站楼</td>
+                        </tr>
+                        <tr class="hover:bg-sky-50/40 bg-sky-50/30">
+                            <td class="py-3.5 px-4 font-semibold text-slate-900">10/1 (周四)</td>
+                            <td class="py-3.5 px-4">21:10 - 22:30</td>
+                            <td class="py-3.5 px-4 font-bold text-slate-900">SFO 入境取车 ➔ 机场酒店</td>
+                            <td class="py-3.5 px-4">AirTrain 约 10 min</td>
+                            <td class="py-3.5 px-4">凭证 L720EDA4567 提车（主驾驶随身携带驾照原件及翻译件）</td>
+                            <td class="py-3.5 px-4"><a href="https://www.google.com/maps/search/?api=1&query=San+Francisco+International+Airport" target="_blank" class="text-sky-600 underline">地图</a></td>
+                        </tr>
+                        <tr class="hover:bg-sky-50/40">
+                            <td class="py-3.5 px-4 font-semibold text-slate-900">10/2 (周五)</td>
+                            <td class="py-3.5 px-4">08:30 - 12:00</td>
+                            <td class="py-3.5 px-4 font-medium text-slate-800">金门大桥 ➔ 九曲花街 ➔ Pier 39</td>
+                            <td class="py-3.5 px-4">市区约 42 km (1 h)</td>
+                            <td class="py-3.5 px-4">打卡 Battery Spencer 观景点、体验弯道驾驶、看加州海狮。<br><span class="text-amber-600 font-semibold">⭐ 务必抽空前往当地华美银行网点办理业务。</span></td>
+                            <td class="py-3.5 px-4"><a href="https://www.google.com/maps/search/?api=1&query=East+West+Bank+Bay+Area" target="_blank" class="text-sky-600 underline">银行网点</a></td>
+                        </tr>
+                        <tr class="hover:bg-sky-50/40">
+                            <td class="py-3.5 px-4 font-semibold text-slate-900">10/2 (周五)</td>
+                            <td class="py-3.5 px-4">12:45 - 16:30</td>
+                            <td class="py-3.5 px-4 font-medium text-indigo-600">Apple Park ➔ 斯坦福大学</td>
+                            <td class="py-3.5 px-4">约 85 km (1.5 h)</td>
+                            <td class="py-3.5 px-4"><span class="text-amber-600 font-medium">[精简预案]</span> 若延误舍弃 Google，仅打卡 Apple 游客中心与斯坦福 Main Quad</td>
+                            <td class="py-3.5 px-4 text-slate-400">硅谷周五车流</td>
+                        </tr>
+                        <tr class="hover:bg-sky-50/40 bg-indigo-50/30">
+                            <td class="py-3.5 px-4 font-semibold text-slate-900">10/2 (周五)</td>
+                            <td class="py-3.5 px-4">16:30 - 21:00</td>
+                            <td class="py-3.5 px-4 font-bold text-indigo-700">🌙 傍晚夜行南下 ➔ 蒙特雷/卡梅尔</td>
+                            <td class="py-3.5 px-4">约 160 km (2.5 h)</td>
+                            <td class="py-3.5 px-4">顺畅夜行南下。<strong>入住蒙特雷或卡梅尔海景酒店，清晨推窗即见太平洋海景！</strong></td>
+                            <td class="py-3.5 px-4"><a href="https://www.google.com/maps/search/?api=1&query=Carmel-by-the-Sea,+CA" target="_blank" class="text-sky-600 underline">卡梅尔地图</a></td>
+                        </tr>
+                        <tr class="hover:bg-sky-50/40">
+                            <td class="py-3.5 px-4 font-semibold text-slate-900">10/3 (周六)</td>
+                            <td class="py-3.5 px-4">10:00 - 12:30</td>
+                            <td class="py-3.5 px-4 font-medium text-slate-800">比克斯比大桥 ➔ 海象滩</td>
+                            <td class="py-3.5 px-4">约 134 km (2 h)</td>
+                            <td class="py-3.5 px-4">打卡 1 号公路悬崖混凝土拱桥，观察野生海象群</td>
+                            <td class="py-3.5 px-4 text-slate-400">免费停车</td>
+                        </tr>
+                        <tr class="hover:bg-sky-50/40">
+                            <td class="py-3.5 px-4 font-semibold text-slate-900">10/3 (周六)</td>
+                            <td class="py-3.5 px-4">12:30 - 20:00</td>
+                            <td class="py-3.5 px-4 font-medium text-purple-600">洛杉矶市区 / USC 橄榄球赛</td>
+                            <td class="py-3.5 px-4">约 370 km (4 h)</td>
+                            <td class="py-3.5 px-4">
+                                <span class="text-amber-600 font-medium">[主选]</span> USC vs Washington 比赛；<span class="text-slate-500">[替补]</span> 星光大道与好莱坞山公园观景台<br>
+                                🏈 <strong>购票直达：</strong><a href="https://usctrojans.com" target="_blank" class="text-indigo-600 font-bold underline">USC Trojans 官网</a>
+                            </td>
+                            <td class="py-3.5 px-4"><a href="https://www.google.com/maps/search/?api=1&query=Los+Angeles,+CA" target="_blank" class="text-sky-600 underline">洛杉矶地图</a></td>
+                        </tr>
+                        <tr class="hover:bg-sky-50/40">
+                            <td class="py-3.5 px-4 font-semibold text-slate-900">10/3 (周六)</td>
+                            <td class="py-3.5 px-4">21:00 - 22:30</td>
+                            <td class="py-3.5 px-4 font-medium text-slate-800">格里菲斯天文台夜景 ➔ 酒店</td>
+                            <td class="py-3.5 px-4">约 19 km (35 min)</td>
+                            <td class="py-3.5 px-4">球赛散场预留缓冲后前往登顶俯瞰夜景，当晚入住洛杉矶、长滩或尔湾酒店休整。</td>
+                            <td class="py-3.5 px-4"><a href="https://www.google.com/maps/search/?api=1&query=Irvine,+CA" target="_blank" class="text-sky-600 underline">尔湾地图</a></td>
+                        </tr>
+                        <tr class="hover:bg-sky-50/40">
+                            <td class="py-3.5 px-4 font-semibold text-slate-900">10/4 (周日)</td>
+                            <td class="py-3.5 px-4">08:00 - 13:00</td>
+                            <td class="py-3.5 px-4 font-medium text-emerald-600">中途岛号航母博物馆 (圣地亚哥)</td>
+                            <td class="py-3.5 px-4">往返约 360 km (1.8h)</td>
+                            <td class="py-3.5 px-4">
+                                登真正退役航母，参观甲板战机与飞行模拟器。<br>
+                                🚢 <strong>门票预订：</strong>建议前往 <span class="text-sky-600 font-bold">携程 (Trip.com)</span> 搜索“中途岛号航母博物馆”便捷购买。
+                            </td>
+                            <td class="py-3.5 px-4"><a href="https://www.google.com/maps/search/?api=1&query=USS+Midway+Museum,+San+Diego,+CA" target="_blank" class="text-sky-600 underline">航母地图</a></td>
+                        </tr>
+                        <tr class="hover:bg-sky-50/40">
+                            <td class="py-3.5 px-4 font-semibold text-slate-900">10/4 (周日)</td>
+                            <td class="py-3.5 px-4">16:30 - 22:30</td>
+                            <td class="py-3.5 px-4 font-medium text-indigo-600">SpaceX 霍桑总部 ➔ LAX 还车</td>
+                            <td class="py-3.5 px-4">约 185 km (2.5 h)</td>
+                            <td class="py-3.5 px-4">顺畅则停 15min 合影猎鹰9号，前往加油站加满油后至 LAX 还车</td>
+                            <td class="py-3.5 px-4 text-slate-400">22:30 前还车</td>
+                        </tr>
+                        <tr class="hover:bg-sky-50/40">
+                            <td class="py-3.5 px-4 font-semibold text-slate-900">10/4 (周日)</td>
+                            <td class="py-3.5 px-4">23:45 - 05:30(+2)</td>
+                            <td class="py-3.5 px-4 font-medium text-sky-600">🛫 洛杉矶 ➔ 马尼拉</td>
+                            <td class="py-3.5 px-4">飞行约 14 h 45 min</td>
+                            <td class="py-3.5 px-4">搭乘 PR103，跨越国际日期变更线（10/6 05:30 落地）</td>
+                            <td class="py-3.5 px-4 text-slate-400">LAX T-B 登机</td>
+                        </tr>
+                        <tr class="hover:bg-sky-50/40">
+                            <td class="py-3.5 px-4 font-semibold text-slate-900">10/6 (周二)</td>
+                            <td class="py-3.5 px-4">07:00 - 13:00</td>
+                            <td class="py-3.5 px-4 font-medium text-amber-600">马尼拉转机市区游 (9h10m停留)</td>
+                            <td class="py-3.5 px-4">市区 15 km (30 min)</td>
+                            <td class="py-3.5 px-4">黎刹公园 ➔ 圣地亚哥城堡 ➔ 王彬街唐人街吃早茶 ➔ MOA 商场</td>
+                            <td class="py-3.5 px-4 text-slate-400">Grab打车</td>
+                        </tr>
+                        <tr class="hover:bg-sky-50/40">
+                            <td class="py-3.5 px-4 font-semibold text-slate-900">10/6 (周二)</td>
+                            <td class="py-3.5 px-4">14:40 - 17:00</td>
+                            <td class="py-3.5 px-4 font-medium text-sky-600">🛫 马尼拉 ➔ 香港</td>
+                            <td class="py-3.5 px-4">飞行约 2 h 20 min</td>
+                            <td class="py-3.5 px-4">搭乘 PR306 顺利抵达香港 T1，提取行李返家</td>
+                            <td class="py-3.5 px-4 text-emerald-600 font-bold">圆满结束！</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 行程备忘录与重点强调 -->
+        <section class="grid md:grid-cols-2 gap-6 text-xs">
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-amber-200 bg-amber-50/30">
+                <h3 class="text-sm font-bold text-amber-800 mb-3 flex items-center gap-2">
+                    ⚠️ 证件与银行事务特别提醒
+                </h3>
+                <ul class="space-y-3 text-slate-600">
+                    <li>▪ <strong>中国驾照与翻译件</strong>：主驾驶人 <strong>BAOYI CHEN</strong> 务必随身携带<strong>中国驾照原件</strong>及国际认证翻译件。</li>
+                    <li class="bg-white p-3 rounded-lg border border-amber-100 shadow-sm">
+                        ▪ <strong class="text-amber-700">华美银行业务 (East West Bank)</strong>：已在 10月2日 行程中预留网点办理时间。<br>
+                        如有疑问或需帮助，请联系客服：<br>
+                        📞 <strong>中国</strong>：+86 400.080.5290 或 +86 400.842.3268<br>
+                        📞 <strong>美国</strong>：+1 833.468.8356<br>
+                        🌐 服务时间查询：<a href="https://digital.eastwestbank.com/en/resources/contact-us.html" target="_blank" class="text-sky-600 hover:text-sky-800 underline">访问官网 Contact Us</a>
+                    </li>
+                    <li>▪ <strong>EVUS 登记</strong>：在 evus.gov 完成登记并打印确认页随身携带。</li>
+                    <li>▪ <strong>支付卡片</strong>：BAOYI CHEN 名下 Visa/Mastercard 实体信用卡（用于门店押金预授权）。</li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+                <h3 class="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2">
+                    📱 软件、门票与交通安全备忘
+                </h3>
+                <ul class="space-y-2 text-slate-600">
+                    <li>▪ <strong>中途岛航母门票</strong>：推荐直接在 <strong class="text-sky-600">携程 App</strong> 搜索购买，中文界面方便快捷。</li>
+                    <li>▪ <strong>USC 橄榄球赛门票</strong>：官方购票网址为 <a href="https://usctrojans.com" target="_blank" class="text-indigo-600 font-bold underline">usctrojans.com</a>，建议出发前 7 天确认最终开球时间。</li>
+                    <li>▪ <strong>Google 地图导航</strong>：全程使用 Google Maps 进行路线规避与离线导航。</li>
+                    <li>▪ <strong>加州过桥费</strong>：提前注册 FasTrak 绑定车牌，缴金门大桥过桥费。</li>
+                    <li>▪ <strong>Grab App</strong>：下载注册 Grab，用于马尼拉转机市区短途舒适出行。</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-6xl mx-auto px-4 text-center text-xs text-slate-400 mt-12">
+        加州科技亲子自驾全景手册 (小清新尊享版) · 祝全家旅途愉快，万事顺遂！
+    </footer>
+
+    <!-- 动态倒计时 JS 脚本 -->
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date('2026-10-01T18:00:00+08:00').getTime();
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('countdown').innerText = "🎉 行程已正式开启！";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerText = `${days}天 ${hours}时 ${minutes}分 ${seconds}秒`;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
