@@ -59,39 +59,16 @@
             </div>
         </section>
 
-        <!-- ☀️ 实时天气与日落动态获取组件 -->
-        <section class="bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-2xl p-5 shadow-sm">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
-                <div>
-                    <div class="text-xs uppercase tracking-wider font-bold text-amber-100">🌡️ 当地实时气象监控</div>
-                    <h3 class="text-lg font-black mt-0.5">旧金山 (San Francisco) 今日实时天气</h3>
-                </div>
-                <!-- 城市切换按钮 -->
-                <div class="flex gap-2">
-                    <button onclick="fetchWeather('San Francisco')" class="bg-white/20 hover:bg-white/30 text-xs px-3 py-1.5 rounded-lg font-bold transition border border-white/30 cursor-pointer">旧金山</button>
-                    <button onclick="fetchWeather('Los Angeles')" class="bg-white/20 hover:bg-white/30 text-xs px-3 py-1.5 rounded-lg font-bold transition border border-white/30 cursor-pointer">洛杉矶</button>
-                    <button onclick="fetchWeather('San Diego')" class="bg-white/20 hover:bg-white/30 text-xs px-3 py-1.5 rounded-lg font-bold transition border border-white/30 cursor-pointer">圣地亚哥</button>
-                </div>
+        <!-- 🌍 全程途经城市实时天气与日落平铺微型看板 -->
+        <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
+            <div class="flex justify-between items-center mb-4 border-b border-slate-100 pb-3">
+                <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+                    🌡️ 全程站点实时天气、气温与日落速查
+                </h3>
+                <span class="text-xs text-slate-400">自动同步当地最新气象</span>
             </div>
-
-            <!-- 动态填充的天气数据展示区 -->
-            <div id="weather-box" class="bg-white/15 backdrop-blur-md rounded-xl p-4 border border-white/30 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div>
-                    <div class="text-xs text-amber-100">当前温度 / 天气</div>
-                    <div id="w-current" class="text-lg font-black mt-1">连接实时API中...</div>
-                </div>
-                <div>
-                    <div class="text-xs text-amber-100">最高 vs 最低气温</div>
-                    <div id="w-temp-range" class="text-lg font-black mt-1 font-mono">-- / --</div>
-                </div>
-                <div>
-                    <div class="text-xs text-amber-100">日出时间 🌅</div>
-                    <div id="w-sunrise" class="text-lg font-black mt-1 font-mono">--:--</div>
-                </div>
-                <div>
-                    <div class="text-xs text-amber-100">日落时间 🌇</div>
-                    <div id="w-sunset" class="text-lg font-black mt-1 font-mono text-amber-200">--:--</div>
-                </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3" id="weather-grid">
+                <!-- 动态载入的城市卡片将平铺显示在这里 -->
             </div>
         </section>
 
@@ -410,7 +387,7 @@
         加州科技亲子自驾全景手册 (小清新尊享版) · 祝全家旅途愉快，万事顺遂！
     </footer>
 
-    <!-- 动态倒计时 & 实时天气 API 脚本 -->
+    <!-- 动态倒计时 & 多城市实时天气平铺看板 JS 脚本 -->
     <script>
         // 倒计时逻辑
         function updateCountdown() {
@@ -433,37 +410,64 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 实时天气与日出日落获取逻辑 (调用免费开源 wttr.in API)
-        async function fetchWeather(city) {
-            document.getElementById('w-current').innerText = "加载中...";
-            try {
-                // 使用 wttr.in 获取 JSON 数据
-                const response = await fetch(`https://wttr.in/${encodeURIComponent(city)}?format=j1`);
-                const data = await response.json();
-                
-                const current = data.current_condition[0];
-                const todayWeather = data.weather[0]; // 今日天气
+        // 包含所有途经城市的列表
+        const cities = [
+            { name: "香港", query: "Hong Kong" },
+            { name: "马尼拉", query: "Manila" },
+            { name: "旧金山", query: "San Francisco" },
+            { name: "硅谷(圣何塞)", query: "San Jose" },
+            { name: "洛杉矶", query: "Los Angeles" },
+            { name: "圣地亚哥", query: "San Diego" }
+        ];
 
-                const tempC = current.temp_C;
-                const desc = current.lang_zh ? current.lang_zh[0].value : current.weatherDesc[0].value;
-                const maxTemp = todayWeather.maxtempC;
-                const minTemp = todayWeather.mintempC;
-                const sunrise = todayWeather.astronomy[0].sunrise;
-                const sunset = todayWeather.astronomy[0].sunset;
+        async function loadAllCitiesWeather() {
+            const grid = document.getElementById('weather-grid');
+            grid.innerHTML = '';
 
-                document.getElementById('w-current').innerText = `${tempC}°C · ${desc}`;
-                document.getElementById('w-temp-range').innerText = `最高 ${maxTemp}°C / 最低 ${minTemp}°C`;
-                document.getElementById('w-sunrise').innerText = sunrise;
-                document.getElementById('w-sunset').innerText = sunset;
-            } catch (error) {
-                document.getElementById('w-current').innerText = "获取失败(请检查网络)";
-                document.getElementById('w-temp-range').innerText = "-- / --";
+            for (let c of cities) {
+                // 先生成一个加载中的微型卡片
+                const cardId = `wc-${c.query.replace(/\s+/g, '')}`;
+                const cardHTML = `
+                    <div id="${cardId}" class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-center shadow-2xs">
+                        <div class="font-bold text-slate-800 text-xs mb-1">${c.name}</div>
+                        <div class="text-[11px] text-sky-600 font-semibold mb-1">加载中...</div>
+                        <div class="text-[10px] text-slate-400 font-mono">-- / --</div>
+                        <div class="text-[10px] text-amber-600 font-mono mt-1">🌅 降落/日落: --:--</div>
+                    </div>
+                `;
+                grid.insertAdjacentHTML('beforeend', cardHTML);
+
+                // 异步请求气象数据
+                try {
+                    const res = await fetch(`https://wttr.in/${encodeURIComponent(c.query)}?format=j1`);
+                    const data = await res.json();
+                    const current = data.current_condition[0];
+                    const today = data.weather[0];
+
+                    const temp = current.temp_C;
+                    const desc = current.lang_zh ? current.lang_zh[0].value : current.weatherDesc[0].value;
+                    const maxT = today.maxtempC;
+                    const minT = today.mintempC;
+                    const sunset = today.astronomy[0].sunset;
+
+                    document.getElementById(cardId).innerHTML = `
+                        <div class="font-bold text-slate-900 text-xs mb-1">${c.name}</div>
+                        <div class="text-[11px] text-indigo-600 font-bold mb-0.5">${temp}°C · ${desc}</div>
+                        <div class="text-[10px] text-slate-500 font-mono">高 ${maxT}° / 低 ${minT}°</div>
+                        <div class="text-[10px] text-amber-700 font-mono mt-1 pt-1 border-t border-slate-100">🌇 ${sunset}</div>
+                    `;
+                } catch (err) {
+                    document.getElementById(cardId).innerHTML = `
+                        <div class="font-bold text-slate-900 text-xs mb-1">${c.name}</div>
+                        <div class="text-[10px] text-rose-500 mt-2">获取失败</div>
+                    `;
+                }
             }
         }
 
-        // 网页加载后默认获取旧金山天气
+        // 页面加载后自动批量获取
         window.onload = function() {
-            fetchWeather('San Francisco');
+            loadAllCitiesWeather();
         };
     </script>
 </body>
