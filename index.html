@@ -59,16 +59,95 @@
             </div>
         </section>
 
-        <!-- 🌍 全程途经城市实时天气与日落平铺微型看板 -->
+        <!-- 🌍 全程途经城市实时天气、当前当地时间与日出日落看板 -->
         <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
             <div class="flex justify-between items-center mb-4 border-b border-slate-100 pb-3">
                 <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
-                    🌡️ 全程站点实时天气、气温与日落速查
+                    🌡️ 全程站点实时气象、当地时间与日月更替速查
                 </h3>
-                <span class="text-xs text-slate-400">自动同步当地最新气象</span>
+                <span class="text-xs text-slate-400">自动同步当地最新气象与时钟</span>
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3" id="weather-grid">
                 <!-- 动态载入的城市卡片将平铺显示在这里 -->
+            </div>
+        </section>
+
+        <!-- 🧳 专属行李与物资准备核对表（资深出海经验融合） -->
+        <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+            <h2 class="text-base font-bold text-slate-800 mb-3 flex items-center gap-2">
+                🧳 资深出海行李与物资准备核对表 (可直接勾选核对)
+            </h2>
+            <p class="text-xs text-slate-500 mb-4">结合多年海外自驾经验精简提炼，确保出发前万无一失：</p>
+            
+            <div class="grid md:grid-cols-3 gap-4 text-xs">
+                <!-- 证件与金融 -->
+                <div class="bg-sky-50/50 border border-sky-200 rounded-xl p-4">
+                    <h3 class="font-bold text-sky-900 text-sm mb-2 flex items-center gap-1.5">
+                        📄 1. 证件与金融
+                    </h3>
+                    <ul class="space-y-1.5 text-slate-600">
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-sky-600"> 护照原件</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-sky-600"> 港澳通行证（含有效签注）</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-sky-600"> EVUS 登记打印页</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-sky-600"> 中国驾照原件 + 英文翻译件</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-sky-600"> 美金零钱（小费/停车）</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-sky-600"> 国际信用卡 (Visa主打)</label></li>
+                    </ul>
+                </div>
+
+                <!-- 数码通讯与票据 -->
+                <div class="bg-indigo-50/50 border border-indigo-200 rounded-xl p-4">
+                    <h3 class="font-bold text-indigo-900 text-sm mb-2 flex items-center gap-1.5">
+                        📱 2. 数码通讯与票据
+                    </h3>
+                    <ul class="space-y-1.5 text-slate-600">
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-indigo-600"> 手机开通国际漫游</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-indigo-600"> 下载“无忧行”App</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-indigo-600"> 国际转换插头 & 插排</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-indigo-600"> 大容量充电宝</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-indigo-600"> 机票/酒店/租车/门票电子档归档</label></li>
+                    </ul>
+                </div>
+
+                <!-- 生活饮食神器 -->
+                <div class="bg-amber-50/50 border border-amber-200 rounded-xl p-4">
+                    <h3 class="font-bold text-amber-900 text-sm mb-2 flex items-center gap-1.5">
+                        🍲 3. 生活与家乡味道
+                    </h3>
+                    <ul class="space-y-1.5 text-slate-600">
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-amber-600"> 车载点烟器充电口</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-amber-600"> 110V 便携电饭煲</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-amber-600"> 小瓶洗洁精 & 便携碗筷</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-amber-600"> 家乡腊肠、豆豉鲮鱼、真空米</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-amber-600"> 保温装热水瓶</label></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 第二行：穿戴与药品 -->
+            <div class="grid md:grid-cols-2 gap-4 text-xs mt-4">
+                <div class="bg-emerald-50/50 border border-emerald-200 rounded-xl p-4">
+                    <h3 class="font-bold text-emerald-900 text-sm mb-2 flex items-center gap-1.5">
+                        👕 4. 穿戴与洗漱防护
+                    </h3>
+                    <ul class="space-y-1.5 text-slate-600">
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-emerald-600"> 14°-32°衣物（应对旧金山海风与洛杉矶艳阳）</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-emerald-600"> 墨镜、太阳帽、防晒霜</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-emerald-600"> 宽松舒适的暴走步行鞋</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-emerald-600"> 个人牙刷、一次性拖鞋（美酒店常不备）</label></li>
+                    </ul>
+                </div>
+
+                <div class="bg-rose-50/50 border border-rose-200 rounded-xl p-4">
+                    <h3 class="font-bold text-rose-900 text-sm mb-2 flex items-center gap-1.5">
+                        💊 5. 常备应急药品
+                    </h3>
+                    <ul class="space-y-1.5 text-slate-600">
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-rose-600"> 感冒药、退烧药（适应温差与时差）</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-rose-600"> 肠胃药物（应对饮食与水土变化）</label></li>
+                        <li><label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded text-rose-600"> 创可贴、消炎药、个人日常特需药品</label></li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -402,7 +481,7 @@
         加州科技亲子自驾全景手册 (小清新尊享版) · 祝全家旅途愉快，万事顺遂！
     </footer>
 
-    <!-- 动态倒计时 & 多城市实时天气平铺看板 JS 脚本 -->
+    <!-- 动态倒计时 & 多城市实时天气、当前时间、日出日落分离展示 JS 脚本 -->
     <script>
         // 倒计时逻辑
         function updateCountdown() {
@@ -425,14 +504,14 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 包含所有途经城市的列表
+        // 包含所有途经城市的列表（绑定对应国际时区）
         const cities = [
-            { name: "香港", query: "Hong Kong" },
-            { name: "马尼拉", query: "Manila" },
-            { name: "旧金山", query: "San Francisco" },
-            { name: "硅谷(圣何塞)", query: "San Jose" },
-            { name: "洛杉矶", query: "Los Angeles" },
-            { name: "圣地亚哥", query: "San Diego" }
+            { name: "香港", query: "Hong Kong", tz: "Asia/Hong_Kong" },
+            { name: "马尼拉", query: "Manila", tz: "Asia/Manila" },
+            { name: "旧金山", query: "San Francisco", tz: "America/Los_Angeles" },
+            { name: "硅谷(圣何塞)", query: "San Jose", tz: "America/Los_Angeles" },
+            { name: "洛杉矶", query: "Los Angeles", tz: "America/Los_Angeles" },
+            { name: "圣地亚哥", query: "San Diego", tz: "America/Los_Angeles" }
         ];
 
         async function loadAllCitiesWeather() {
@@ -442,14 +521,35 @@
             for (let c of cities) {
                 const cardId = `wc-${c.query.replace(/\s+/g, '')}`;
                 const cardHTML = `
-                    <div id="${cardId}" class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-center shadow-2xs">
-                        <div class="font-bold text-slate-800 text-xs mb-1">${c.name}</div>
-                        <div class="text-[11px] text-sky-600 font-semibold mb-1">加载中...</div>
-                        <div class="text-[10px] text-slate-400 font-mono">-- / --</div>
-                        <div class="text-[10px] text-amber-600 font-mono mt-1">🌅 降落/日落: --:--</div>
+                    <div id="${cardId}" class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-center shadow-2xs flex flex-col justify-between">
+                        <div>
+                            <div class="font-bold text-slate-900 text-xs mb-1">${c.name}</div>
+                            <div class="text-[11px] text-sky-600 font-semibold mb-0.5">加载中...</div>
+                            <div class="text-[10px] text-slate-400 font-mono mb-1">当地时间: --:--</div>
+                            <div class="text-[10px] text-slate-500 font-mono">气温: -- / --</div>
+                        </div>
+                        <div class="mt-2 pt-2 border-t border-slate-200/60 text-[10px] space-y-0.5 font-mono text-left bg-white/60 p-1.5 rounded">
+                            <div class="text-amber-700">🌅 日出: --:--</div>
+                            <div class="text-purple-700">🌇 日落: --:--</div>
+                        </div>
                     </div>
                 `;
                 grid.insertAdjacentHTML('beforeend', cardHTML);
+
+                // 计算该时区当前当地时间
+                let localTimeString = "--:--";
+                try {
+                    const now = new Date();
+                    localTimeString = new Intl.DateTimeFormating ? new Intl.DateTimeFormat('en-GB', {
+                        timeZone: c.tz,
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit',
+                        hour12: false
+                    }).format(now) : "--:--";
+                } catch(e) {
+                    localTimeString = new Date().toLocaleTimeString();
+                }
 
                 try {
                     const res = await fetch(`https://wttr.in/${encodeURIComponent(c.query)}?format=j1`);
@@ -461,18 +561,27 @@
                     const desc = current.lang_zh ? current.lang_zh[0].value : current.weatherDesc[0].value;
                     const maxT = today.maxtempC;
                     const minT = today.mintempC;
+                    const sunrise = today.astronomy[0].sunrise;
                     const sunset = today.astronomy[0].sunset;
 
                     document.getElementById(cardId).innerHTML = `
-                        <div class="font-bold text-slate-900 text-xs mb-1">${c.name}</div>
-                        <div class="text-[11px] text-indigo-600 font-bold mb-0.5">${temp}°C · ${desc}</div>
-                        <div class="text-[10px] text-slate-500 font-mono">高 ${maxT}° / 低 ${minT}°</div>
-                        <div class="text-[10px] text-amber-700 font-mono mt-1 pt-1 border-t border-slate-100">🌇 ${sunset}</div>
+                        <div>
+                            <div class="font-bold text-slate-900 text-xs mb-1">${c.name}</div>
+                            <div class="text-[11px] text-indigo-600 font-bold mb-0.5">${temp}°C · ${desc}</div>
+                            <div class="text-[10px] text-emerald-700 font-mono font-semibold mb-1">🕒 现当地: ${localTimeString}</div>
+                            <div class="text-[10px] text-slate-500 font-mono">高 ${maxT}° / 低 ${minT}°</div>
+                        </div>
+                        <div class="mt-2 pt-2 border-t border-slate-200/60 text-[10px] space-y-0.5 font-mono text-left bg-white p-1.5 rounded shadow-2xs">
+                            <div class="text-amber-700 font-medium">🌅 日出: ${sunrise}</div>
+                            <div class="text-purple-700 font-medium">🌇 日落: ${sunset}</div>
+                        </div>
                     `;
                 } catch (err) {
                     document.getElementById(cardId).innerHTML = `
-                        <div class="font-bold text-slate-900 text-xs mb-1">${c.name}</div>
-                        <div class="text-[10px] text-rose-500 mt-2">获取失败</div>
+                        <div>
+                            <div class="font-bold text-slate-900 text-xs mb-1">${c.name}</div>
+                            <div class="text-[10px] text-rose-500 mt-2">气象数据获取失败</div>
+                        </div>
                     `;
                 }
             }
